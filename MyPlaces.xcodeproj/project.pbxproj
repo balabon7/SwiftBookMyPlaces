@@ -12,6 +12,7 @@
 		04A555A7247BF6D4009C0435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A555A5247BF6D4009C0435 /* Main.storyboard */; };
 		04A555A9247BF6D5009C0435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A555A8247BF6D5009C0435 /* Assets.xcassets */; };
 		04A555AC247BF6D5009C0435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A555AA247BF6D5009C0435 /* LaunchScreen.storyboard */; };
+		04A555B4247C31A1009C0435 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		04A555A8247BF6D5009C0435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04A555AB247BF6D5009C0435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04A555AD247BF6D5009C0435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				04A5559F247BF6D4009C0435 /* AppDelegate.swift */,
 				04A555A3247BF6D4009C0435 /* MainViewController.swift */,
+				04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */,
 				04A555A5247BF6D4009C0435 /* Main.storyboard */,
 				04A555A8247BF6D5009C0435 /* Assets.xcassets */,
 				04A555AA247BF6D5009C0435 /* LaunchScreen.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A555B4247C31A1009C0435 /* CustomTableViewCell.swift in Sources */,
 				04A555A4247BF6D4009C0435 /* MainViewController.swift in Sources */,
 				04A555A0247BF6D4009C0435 /* AppDelegate.swift in Sources */,
 			);
