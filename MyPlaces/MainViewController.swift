@@ -17,7 +17,6 @@ class MainViewController: UITableViewController {
         
         navigationItem.title = "My Places"
     }
-
     
     //MARK: - UItableView Protocols
     

@@ -14,7 +14,7 @@
 		04A555AC247BF6D5009C0435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A555AA247BF6D5009C0435 /* LaunchScreen.storyboard */; };
 		04A555B4247C31A1009C0435 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */; };
 		04A555B6247C3683009C0435 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555B5247C3683009C0435 /* PlaceModel.swift */; };
-		04A555B8247C3B59009C0435 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555B7247C3B59009C0435 /* TableViewController.swift */; };
+		04A555B8247C3B59009C0435 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555B7247C3B59009C0435 /* NewPlaceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		04A555AD247BF6D5009C0435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		04A555B5247C3683009C0435 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
-		04A555B7247C3B59009C0435 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		04A555B7247C3B59009C0435 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 				04A5559F247BF6D4009C0435 /* AppDelegate.swift */,
 				04A555B5247C3683009C0435 /* PlaceModel.swift */,
 				04A555A3247BF6D4009C0435 /* MainViewController.swift */,
-				04A555B7247C3B59009C0435 /* TableViewController.swift */,
+				04A555B7247C3B59009C0435 /* NewPlaceViewController.swift */,
 				04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */,
 				04A555A5247BF6D4009C0435 /* Main.storyboard */,
 				04A555A8247BF6D5009C0435 /* Assets.xcassets */,
@@ -147,7 +147,7 @@
 				04A555B4247C31A1009C0435 /* CustomTableViewCell.swift in Sources */,
 				04A555B6247C3683009C0435 /* PlaceModel.swift in Sources */,
 				04A555A4247BF6D4009C0435 /* MainViewController.swift in Sources */,
-				04A555B8247C3B59009C0435 /* TableViewController.swift in Sources */,
+				04A555B8247C3B59009C0435 /* NewPlaceViewController.swift in Sources */,
 				04A555A0247BF6D4009C0435 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
