@@ -107,7 +107,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoPlaceholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ene-q4-OSd">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ene-q4-OSd">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
@@ -236,13 +236,21 @@
                     <navigationItem key="navigationItem" id="gMj-yE-cFv">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Vc-ia-hvu">
                             <connections>
-                                <segue destination="Rvj-RE-pCH" kind="unwind" unwindAction="cancelAction:" id="MkZ-FA-XeE"/>
+                                <action selector="cancelAction:" destination="EXW-93-3mk" id="UOC-PO-Dg5"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xu3-EG-u9O"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="xu3-EG-u9O">
+                            <connections>
+                                <segue destination="Rvj-RE-pCH" kind="unwind" unwindAction="unwindSegue:" id="91o-st-pLo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlace" destination="ene-q4-OSd" id="spV-b6-c8w"/>
+                        <outlet property="placeImage" destination="ene-q4-OSd" id="spV-b6-c8w"/>
+                        <outlet property="placeLocation" destination="yfQ-gW-gEi" id="ZgI-l7-NJz"/>
+                        <outlet property="placeName" destination="fa6-DD-GzR" id="1OM-Rt-j88"/>
+                        <outlet property="placeType" destination="XsX-Pn-8gu" id="EbE-MB-nzL"/>
+                        <outlet property="saveButton" destination="xu3-EG-u9O" id="tIt-S6-ctf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJl-I7-R8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -286,6 +294,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PhotoPlaceholder" width="195" height="196"/>
+        <image name="photoPlaceholder" width="195" height="196"/>
     </resources>
 </document>

@@ -10,8 +10,14 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    @IBOutlet weak var imageOfPlace: UIImageView!
+    var newPlace: Place?
+    var imageIsChanged = false
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var placeImage: UIImageView!
+    @IBOutlet weak var placeName: UITextField!
+    @IBOutlet weak var placeLocation: UITextField!
+    @IBOutlet weak var placeType: UITextField!
     
     
     override func viewDidLoad() {
@@ -22,6 +28,9 @@ class NewPlaceViewController: UITableViewController {
         //Hide unnecessary table lines
         tableView.tableFooterView = UIView()
         
+        saveButton.isEnabled = false
+        
+        placeName.addTarget(self, action: #selector(textFieldChange), for: .editingChanged)
     }
     
     // MARK: - Table View Delegate
@@ -57,6 +66,26 @@ class NewPlaceViewController: UITableViewController {
             view.endEditing(true)
         }
     }
+    
+    func saveNewPlace(){
+        
+       // substitute the default picture or custom
+        var image: UIImage?
+        
+        if imageIsChanged {
+            image = placeImage.image
+        } else {
+            image = #imageLiteral(resourceName: "imagePlaceholder")
+        }
+        
+        newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image:  image, restaurantImage: nil)
+    }
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 // MARK: - Table Field Delegate
@@ -88,9 +117,21 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
     
     //Allows the use of a user-edited image
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        imageOfPlace.image = info[.editedImage] as? UIImage //(assign the edited image)
-        imageOfPlace.contentMode = .scaleAspectFill //scales image by content UIImage
-        imageOfPlace.clipsToBounds = true //image border cropping
+        placeImage.image = info[.editedImage] as? UIImage //(assign the edited image)
+        placeImage.contentMode = .scaleAspectFill //scales image by content UIImage
+        placeImage.clipsToBounds = true //image border cropping
+        
+        imageIsChanged = true // indicator default picture or custom
+        
         dismiss(animated: true, completion: nil)  //close
     }
+    
+    @objc private func textFieldChange(){
+        if placeName.text?.isEmpty == false {
+            saveButton.isEnabled = true
+        } else {
+           saveButton.isEnabled = false
+        }
+    }
+    
 }
