@@ -10,6 +10,10 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
+    @IBOutlet weak var imageOfPlace: UIImageView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,16 +61,26 @@ extension NewPlaceViewController: UITextFieldDelegate {
 }
 
 // MARK: - Table Field Delegate
-extension NewPlaceViewController {
+extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+     //Select and edit image
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         
         if UIImagePickerController.isSourceTypeAvailable(source){
             let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self // imagePicker делегирует выполнение обязаностей делегату - нашему класу self
             imagePicker.allowsEditing = true // allows you to edit
             imagePicker.sourceType = source // specify the value of source
             
             present(imagePicker, animated: true, completion: nil)
         }
+    }
+    
+    //Allows the use of a user-edited image
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imageOfPlace.image = info[.editedImage] as? UIImage //(assign the edited image)
+        imageOfPlace.contentMode = .scaleAspectFill //scales image by content UIImage
+        imageOfPlace.clipsToBounds = true //image border cropping
+        dismiss(animated: true, completion: nil)  //close
     }
 }
