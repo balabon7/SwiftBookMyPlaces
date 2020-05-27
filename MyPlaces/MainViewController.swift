@@ -27,7 +27,7 @@ class MainViewController: UITableViewController {
 //
 //    }
     
-    //MARK: - UItableView Protocols
+    //MARK: - UITableView Protocols
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85.0
@@ -52,6 +52,19 @@ class MainViewController: UITableViewController {
         
         return cell
      }
+    
+    //MARK: - UITableView Delegate
+    
+    // delete value and cell
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let place = places[indexPath.row]
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (_, _) in
+            
+            StorageManager.deletePbject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [deleteAction]
+    }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue){
         guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
