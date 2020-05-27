@@ -68,6 +68,7 @@
                                     <outlet property="imageOfPlace" destination="Kn6-Nd-1fC" id="cHo-gp-qAu"/>
                                     <outlet property="locationLabel" destination="3Tj-3Y-heB" id="bXI-Ai-QgC"/>
                                     <outlet property="nameLabel" destination="Cq3-8k-ACb" id="WwK-vB-Zll"/>
+                                    <segue destination="EXW-93-3mk" kind="show" identifier="showDetail" id="1XX-BG-cK7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -76,7 +77,7 @@
                             <outlet property="delegate" destination="A88-qX-iKP" id="byv-sc-x2e"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aeY-x8-DjZ">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="aeY-x8-DjZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xjF-HB-hW6">
                             <connections>
                                 <segue destination="9SJ-Bk-giG" kind="presentation" id="9Lz-bS-xir"/>
@@ -93,7 +94,7 @@
             <objects>
                 <tableViewController id="EXW-93-3mk" customClass="NewPlaceViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="S3v-qg-nbM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -108,7 +109,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ene-q4-OSd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -233,7 +234,7 @@
                             <outlet property="delegate" destination="EXW-93-3mk" id="DyF-jz-kOz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gMj-yE-cFv">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="gMj-yE-cFv">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="6Vc-ia-hvu">
                             <connections>
                                 <action selector="cancelAction:" destination="EXW-93-3mk" id="UOC-PO-Dg5"/>
@@ -256,14 +257,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJl-I7-R8L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Rvj-RE-pCH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2485.5999999999999" y="79.610194902548727"/>
+            <point key="canvasLocation" x="1764" y="75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkb-VU-b7T">
             <objects>
                 <navigationController id="8Uo-1x-kYh" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Rln-yS-jCC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Rln-yS-jCC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -282,6 +283,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cjB-cY-rgZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -290,10 +294,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LS8-cK-B0Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.5999999999999" y="79.610194902548727"/>
+            <point key="canvasLocation" x="1764" y="-627"/>
         </scene>
     </scenes>
     <resources>
         <image name="photoPlaceholder" width="195" height="196"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1XX-BG-cK7"/>
+    </inferredMetricsTieBreakers>
 </document>
