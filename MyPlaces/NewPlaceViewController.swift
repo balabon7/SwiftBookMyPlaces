@@ -10,7 +10,6 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    var newPlace = Place()
     var imageIsChanged = false
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -22,10 +21,6 @@ class NewPlaceViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
         
         navigationItem.title = "New Place"
         
@@ -72,6 +67,7 @@ class NewPlaceViewController: UITableViewController {
     }
     
     func saveNewPlace(){
+
         
        // substitute the default picture or custom
         var image: UIImage?
@@ -82,7 +78,16 @@ class NewPlaceViewController: UITableViewController {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
         
-        //newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, image:  image, restaurantImage: nil)
+        let imageData = image?.pngData()
+        
+//        newPlace.name = placeName.text!
+//        newPlace.location = placeLocation.text
+//        newPlace.type =  placeType.text
+//        newPlace.imageData = imageData
+        
+        let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
+        
+        StorageManager.saveObject(newPlace)
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
