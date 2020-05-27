@@ -192,6 +192,9 @@
                                     <segment title="Date"/>
                                     <segment title="Name"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="dD5-zs-5fY" eventType="valueChanged" id="Vu4-Ve-LQD"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i5H-rj-paf">
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
@@ -272,7 +275,11 @@
                         <viewLayoutGuide key="safeArea" id="7kb-SF-XTu"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="3Jk-rR-mSW">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="tDB-Ie-e1v"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="tDB-Ie-e1v">
+                            <connections>
+                                <action selector="reversedSorting:" destination="dD5-zs-5fY" id="h8k-dY-yGB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BP1-uG-pMl">
                             <connections>
                                 <segue destination="9SJ-Bk-giG" kind="presentation" id="JYT-sr-7G0"/>
@@ -280,6 +287,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="tDB-Ie-e1v" id="snp-0g-HUN"/>
+                        <outlet property="segmentedControl" destination="e6Q-b0-dVD" id="zfX-0m-FbU"/>
                         <outlet property="tableView" destination="i5H-rj-paf" id="HWU-lR-OAY"/>
                     </connections>
                 </viewController>
