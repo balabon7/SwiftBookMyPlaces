@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409833F2480789B004E645C /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409833E2480789B004E645C /* RatingControl.swift */; };
 		04A555A0247BF6D4009C0435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5559F247BF6D4009C0435 /* AppDelegate.swift */; };
 		04A555A4247BF6D4009C0435 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555A3247BF6D4009C0435 /* MainViewController.swift */; };
 		04A555A7247BF6D4009C0435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A555A5247BF6D4009C0435 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0409833E2480789B004E645C /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		04A5559C247BF6D4009C0435 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5559F247BF6D4009C0435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A555A3247BF6D4009C0435 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				04A555A3247BF6D4009C0435 /* MainViewController.swift */,
 				04A555B7247C3B59009C0435 /* NewPlaceViewController.swift */,
 				04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */,
+				0409833E2480789B004E645C /* RatingControl.swift */,
 				04A555A5247BF6D4009C0435 /* Main.storyboard */,
 				04A555A8247BF6D5009C0435 /* Assets.xcassets */,
 				04A555AA247BF6D5009C0435 /* LaunchScreen.storyboard */,
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0409833F2480789B004E645C /* RatingControl.swift in Sources */,
 				04A555B4247C31A1009C0435 /* CustomTableViewCell.swift in Sources */,
 				04A555B6247C3683009C0435 /* PlaceModel.swift in Sources */,
 				04A555A4247BF6D4009C0435 /* MainViewController.swift in Sources */,
