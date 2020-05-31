@@ -152,7 +152,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6EN-aT-ztj" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6EN-aT-ztj" customClass="RatingControl" customModule="MyPlaces" customModuleProvider="target">
                                                     <rect key="frame" x="81" y="48" width="252" height="44"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starCount">
@@ -219,7 +219,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i5H-rj-paf">
-                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="TTk-eu-69g" customClass="CustomTableViewCell" customModule="MyPlaces" customModuleProvider="target">
@@ -291,7 +291,7 @@
                             <constraint firstItem="i5H-rj-paf" firstAttribute="trailing" secondItem="7kb-SF-XTu" secondAttribute="trailing" id="QHJ-cb-rLs"/>
                             <constraint firstItem="i5H-rj-paf" firstAttribute="top" secondItem="e6Q-b0-dVD" secondAttribute="bottom" constant="1" id="iq7-JS-D0y"/>
                             <constraint firstItem="i5H-rj-paf" firstAttribute="leading" secondItem="7kb-SF-XTu" secondAttribute="leading" id="r5X-Q3-UiL"/>
-                            <constraint firstItem="i5H-rj-paf" firstAttribute="bottom" secondItem="7kb-SF-XTu" secondAttribute="bottom" id="wTT-dq-iKk"/>
+                            <constraint firstItem="i5H-rj-paf" firstAttribute="bottom" secondItem="JA4-nd-hLm" secondAttribute="bottom" id="wTT-dq-iKk"/>
                             <constraint firstItem="e6Q-b0-dVD" firstAttribute="trailing" secondItem="7kb-SF-XTu" secondAttribute="trailing" id="yK9-3P-hLN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7kb-SF-XTu"/>
@@ -316,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCb-cb-HXS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.60000000000002" y="73.313343328335833"/>
+            <point key="canvasLocation" x="988.40579710144937" y="72.991071428571431"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rkb-VU-b7T">
