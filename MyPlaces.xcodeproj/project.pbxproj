@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		048D6932248564CA0083D0CC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048D6931248564CA0083D0CC /* MapViewController.swift */; };
 		04A555A0247BF6D4009C0435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A5559F247BF6D4009C0435 /* AppDelegate.swift */; };
 		04A555A4247BF6D4009C0435 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A555A3247BF6D4009C0435 /* MainViewController.swift */; };
 		04A555A7247BF6D4009C0435 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A555A5247BF6D4009C0435 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		048D6931248564CA0083D0CC /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		04A5559C247BF6D4009C0435 /* MyPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04A5559F247BF6D4009C0435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04A555A3247BF6D4009C0435 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				04A555B7247C3B59009C0435 /* NewPlaceViewController.swift */,
 				04A555B3247C31A1009C0435 /* CustomTableViewCell.swift */,
 				04DD51F32483F64200BC4353 /* RatingControl.swift */,
+				048D6931248564CA0083D0CC /* MapViewController.swift */,
 				04A555A5247BF6D4009C0435 /* Main.storyboard */,
 				04A555A8247BF6D5009C0435 /* Assets.xcassets */,
 				04A555AA247BF6D5009C0435 /* LaunchScreen.storyboard */,
@@ -225,6 +228,7 @@
 				04A555BA247D851D009C0435 /* StorageManager.swift in Sources */,
 				04A555B8247C3B59009C0435 /* NewPlaceViewController.swift in Sources */,
 				04A555A0247BF6D4009C0435 /* AppDelegate.swift in Sources */,
+				048D6932248564CA0083D0CC /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

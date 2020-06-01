@@ -28,12 +28,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ene-q4-OSd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.00000000000006"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67B-v5-MlC">
+                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="LI8-rZ-7eZ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="u7P-vV-Zm0"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="map"/>
+                                                    <connections>
+                                                        <segue destination="j0j-YL-rUn" kind="presentation" identifier="showMap" id="oev-64-wru"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="ene-q4-OSd" firstAttribute="leading" secondItem="77u-X2-alO" secondAttribute="leading" id="Oq9-Qt-RKo"/>
+                                                <constraint firstItem="67B-v5-MlC" firstAttribute="bottom" secondItem="77u-X2-alO" secondAttribute="bottomMargin" id="Z4k-sL-qPQ"/>
+                                                <constraint firstItem="67B-v5-MlC" firstAttribute="trailing" secondItem="77u-X2-alO" secondAttribute="trailingMargin" id="e2d-i5-gzb"/>
                                                 <constraint firstItem="ene-q4-OSd" firstAttribute="top" secondItem="77u-X2-alO" secondAttribute="top" id="fP5-nO-bBg"/>
                                                 <constraint firstAttribute="trailing" secondItem="ene-q4-OSd" secondAttribute="trailing" id="oNF-Sb-q56"/>
                                                 <constraint firstAttribute="bottom" secondItem="ene-q4-OSd" secondAttribute="bottom" id="uTo-8O-piM"/>
@@ -160,30 +173,11 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="170" placeholderIntrinsicHeight="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-RK-3rX" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="122" y="55" width="170" height="30"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                                            <real key="value" value="30"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
-                                                            <real key="value" value="2"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZUp-RK-3rX" firstAttribute="centerY" secondItem="u3G-Jb-UwE" secondAttribute="centerY" id="6Wl-mw-s2R"/>
                                                 <constraint firstItem="6EN-aT-ztj" firstAttribute="centerY" secondItem="u3G-Jb-UwE" secondAttribute="centerY" id="IyG-Bg-XGY"/>
-                                                <constraint firstItem="ZUp-RK-3rX" firstAttribute="centerX" secondItem="u3G-Jb-UwE" secondAttribute="centerX" id="ZMM-PT-QzT"/>
                                                 <constraint firstItem="6EN-aT-ztj" firstAttribute="centerX" secondItem="u3G-Jb-UwE" secondAttribute="centerX" id="sq8-wh-dWr"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="6EN-aT-ztj"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -207,7 +201,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cosmosView" destination="ZUp-RK-3rX" id="xvr-4c-kY9"/>
                         <outlet property="placeImage" destination="ene-q4-OSd" id="spV-b6-c8w"/>
                         <outlet property="placeLocation" destination="yfQ-gW-gEi" id="ZgI-l7-NJz"/>
                         <outlet property="placeName" destination="fa6-DD-GzR" id="1OM-Rt-j88"/>
@@ -220,6 +213,45 @@
                 <exit id="Rvj-RE-pCH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1763.7681159420292" y="75"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="KEu-5T-3Ih">
+            <objects>
+                <viewController id="j0j-YL-rUn" customClass="MapViewController" customModule="MyPlaces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6SN-GB-iNX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-y5-Smt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWe-Bu-cs3">
+                                <rect key="frame" x="344" y="40" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pIH-bn-zvu"/>
+                                    <constraint firstAttribute="width" constant="30" id="uHl-re-caU"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="camcel"/>
+                                <connections>
+                                    <action selector="closeVC:" destination="j0j-YL-rUn" eventType="touchUpInside" id="XQ3-4Z-fuf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="5kR-y5-Smt" firstAttribute="top" secondItem="6SN-GB-iNX" secondAttribute="top" id="H1F-OM-zZc"/>
+                            <constraint firstAttribute="bottom" secondItem="5kR-y5-Smt" secondAttribute="bottom" id="VrO-Z7-Al7"/>
+                            <constraint firstItem="5kR-y5-Smt" firstAttribute="leading" secondItem="rUS-6W-Qbq" secondAttribute="leading" id="pnX-zu-RsF"/>
+                            <constraint firstItem="FWe-Bu-cs3" firstAttribute="top" secondItem="rUS-6W-Qbq" secondAttribute="top" constant="40" id="u8i-Un-p9u"/>
+                            <constraint firstItem="rUS-6W-Qbq" firstAttribute="trailing" secondItem="FWe-Bu-cs3" secondAttribute="trailing" constant="40" id="xI2-Rd-f6W"/>
+                            <constraint firstItem="5kR-y5-Smt" firstAttribute="trailing" secondItem="rUS-6W-Qbq" secondAttribute="trailing" id="xn9-L9-Vo5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rUS-6W-Qbq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="luE-da-XYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2547.826086956522" y="75"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="M8F-gi-Gqi">
@@ -396,8 +428,10 @@
     </scenes>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="camcel" width="128" height="128"/>
         <image name="emptyStar" width="510" height="512"/>
         <image name="filledStar" width="475" height="476"/>
+        <image name="map" width="50" height="50"/>
         <image name="photoPlaceholder" width="195" height="196"/>
     </resources>
     <inferredMetricsTieBreakers>
