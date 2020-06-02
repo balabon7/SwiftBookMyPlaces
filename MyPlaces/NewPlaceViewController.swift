@@ -82,7 +82,6 @@ class NewPlaceViewController: UITableViewController {
         mapVC.place.imageData = placeImage.image?.pngData()
     }
     
-    
     func savePlace(){
        // substitute the default picture or custom
         

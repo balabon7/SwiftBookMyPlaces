@@ -8,11 +8,13 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
     
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -21,6 +23,7 @@ class MapViewController: UIViewController {
         
         mapView.delegate = self
         setupPlacemark()
+        checkLocationServices()
     }
     
     
@@ -55,6 +58,50 @@ class MapViewController: UIViewController {
             self.mapView.selectAnnotation(annotation, animated: true) // что бы выделить созданую аннотацию у mapView
         }
     }
+    
+    private func checkLocationServices() {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAutorization()
+        } else {
+            showLocationAlert()
+        }
+    }
+    
+    private func showLocationAlert(){
+        let alertController = UIAlertController(title: "Ваша геолокация недоступна", message: "Включите ее в настройках", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    private func setupLocationManager() {
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
+    private func checkLocationAutorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            break
+        case .denied:
+            showLocationAlert()
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .restricted:
+            showLocationAlert()
+            break
+        case .authorizedAlways:
+            break
+        @unknown default:
+            print("New case is available")
+        }
+    }
 }
 
 extension MapViewController: MKMapViewDelegate {
@@ -79,5 +126,12 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         return annotationView
+    }
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAutorization()
     }
 }
