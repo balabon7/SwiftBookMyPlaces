@@ -73,20 +73,24 @@ class NewPlaceViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" { return }
         
-        let mapVC = segue.destination as! MapViewController
-        mapVC.place.name = placeName.text!
-        mapVC.place.location = placeLocation.text
-        mapVC.place.type = placeType.text
-        mapVC.place.imageData = placeImage.image?.pngData()
+        guard let identifire = segue.identifier, let mapVC = segue.destination as? MapViewController else { return }
+        
+        mapVC.incomeSegueIdentifier = identifire
+        
+        if identifire == "showPlace" {
+            mapVC.place.name = placeName.text!
+            mapVC.place.location = placeLocation.text
+            mapVC.place.type = placeType.text
+            mapVC.place.imageData = placeImage.image?.pngData()
+        }
     }
     
     func savePlace(){
-       // substitute the default picture or custom
+        // substitute the default picture or custom
         
-       let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
-
+        let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
+        
         let imageData = image?.pngData()
         
         let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData, rating: Double(ratingControl.rating))
@@ -125,7 +129,7 @@ class NewPlaceViewController: UITableViewController {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
-
+        
         navigationItem.leftBarButtonItem = nil
         title = currentPlace?.name
         saveButton.isEnabled = true
@@ -151,8 +155,8 @@ extension NewPlaceViewController: UITextFieldDelegate {
 
 // MARK: - Table Field Delegate
 extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-     //Select and edit image
+    
+    //Select and edit image
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         
         if UIImagePickerController.isSourceTypeAvailable(source){
@@ -180,7 +184,7 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         if placeName.text?.isEmpty == false {
             saveButton.isEnabled = true
         } else {
-           saveButton.isEnabled = false
+            saveButton.isEnabled = false
         }
     }
     

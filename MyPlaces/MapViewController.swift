@@ -16,27 +16,43 @@ class MapViewController: UIViewController {
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10_000.00
+    var incomeSegueIdentifier = ""
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
     }
     
     @IBAction func centerViewInUserLocation() {
-        
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
+        showUserLocation()
     }
+    
+    @IBAction func doneButtonPressed() {
+        
+        
+    }
+    
     
     @IBAction func closeVC(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func setupMapView() {
+        
+        if incomeSegueIdentifier == "showPlace" {
+            setupPlacemark()
+            mapPinImage.isHidden = true
+            adressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
     }
     
     private func setupPlacemark() {
@@ -80,7 +96,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    private func showLocationAlert(){
+    private func showLocationAlert() {
         let alertController = UIAlertController(title: "Location Services Disabled", message: "To enable it go: Settings -> Privacy -> Location Services and turn On", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
@@ -94,9 +110,13 @@ class MapViewController: UIViewController {
     }
     
     private func checkLocationAutorization() {
+        
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if incomeSegueIdentifier == "getAdress" {
+                showUserLocation()
+            }
             break
         case .denied:
             showLocationAlert()
@@ -112,6 +132,14 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showUserLocation(){
+        
+        if let location = locationManager.location?.coordinate {
+                let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+                mapView.setRegion(region, animated: true)
+            }
     }
 }
 
