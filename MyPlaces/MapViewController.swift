@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters: Double = 10_000.00
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -26,6 +27,13 @@ class MapViewController: UIViewController {
         checkLocationServices()
     }
     
+    @IBAction func centerViewInUserLocation() {
+        
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
     
     @IBAction func closeVC(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -65,12 +73,15 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAutorization()
         } else {
-            showLocationAlert()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showLocationAlert()
+            }
         }
     }
     
     private func showLocationAlert(){
-        let alertController = UIAlertController(title: "Ваша геолокация недоступна", message: "Включите ее в настройках", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Location Services Disabled", message: "To enable it go: Settings -> Privacy -> Location Services and turn On", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)

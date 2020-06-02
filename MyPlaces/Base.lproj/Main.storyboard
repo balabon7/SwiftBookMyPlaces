@@ -28,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ene-q4-OSd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.00000000000006"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="67B-v5-MlC">
                                                     <rect key="frame" x="344" y="189" width="50" height="50"/>
@@ -36,7 +36,7 @@
                                                         <constraint firstAttribute="height" constant="50" id="LI8-rZ-7eZ"/>
                                                         <constraint firstAttribute="width" constant="50" id="u7P-vV-Zm0"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="map"/>
+                                                    <state key="normal" image="map"/>
                                                     <connections>
                                                         <segue destination="j0j-YL-rUn" kind="presentation" identifier="showMap" id="oev-64-wru"/>
                                                     </connections>
@@ -231,14 +231,27 @@
                                     <constraint firstAttribute="height" constant="30" id="pIH-bn-zvu"/>
                                     <constraint firstAttribute="width" constant="30" id="uHl-re-caU"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="camcel"/>
+                                <state key="normal" image="camcel"/>
                                 <connections>
                                     <action selector="closeVC:" destination="j0j-YL-rUn" eventType="touchUpInside" id="XQ3-4Z-fuf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uM4-Gi-EdP">
+                                <rect key="frame" x="324" y="752" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7zG-CU-fhF"/>
+                                    <constraint firstAttribute="width" constant="50" id="vWH-8Q-TMj"/>
+                                </constraints>
+                                <state key="normal" image="Location"/>
+                                <connections>
+                                    <action selector="centerViewInUserLocation" destination="j0j-YL-rUn" eventType="touchUpInside" id="GQN-0R-QNT"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="uM4-Gi-EdP" secondAttribute="bottom" constant="40" id="8et-Jo-Zb0"/>
+                            <constraint firstItem="rUS-6W-Qbq" firstAttribute="trailing" secondItem="uM4-Gi-EdP" secondAttribute="trailing" constant="40" id="FZH-zZ-kFd"/>
                             <constraint firstItem="5kR-y5-Smt" firstAttribute="top" secondItem="6SN-GB-iNX" secondAttribute="top" id="H1F-OM-zZc"/>
                             <constraint firstAttribute="bottom" secondItem="5kR-y5-Smt" secondAttribute="bottom" id="VrO-Z7-Al7"/>
                             <constraint firstItem="5kR-y5-Smt" firstAttribute="leading" secondItem="rUS-6W-Qbq" secondAttribute="leading" id="pnX-zu-RsF"/>
@@ -431,6 +444,7 @@
     </scenes>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="Location" width="128" height="128"/>
         <image name="camcel" width="128" height="128"/>
         <image name="emptyStar" width="510" height="512"/>
         <image name="filledStar" width="475" height="476"/>
