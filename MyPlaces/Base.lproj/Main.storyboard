@@ -122,7 +122,7 @@
                                                     </constraints>
                                                     <state key="normal" image="Placeholder"/>
                                                     <connections>
-                                                        <segue destination="j0j-YL-rUn" kind="presentation" identifier="getAdress" id="nGX-4h-Fqq"/>
+                                                        <segue destination="j0j-YL-rUn" kind="presentation" identifier="getAddress" id="nGX-4h-Fqq"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
