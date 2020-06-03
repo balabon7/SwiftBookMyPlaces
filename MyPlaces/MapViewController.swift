@@ -22,11 +22,13 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10_000.00
     var incomeSegueIdentifier = ""
+    var placeCoordinate: CLLocationCoordinate2D?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapPinImage: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +44,13 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed() {
-        
         mapViewControllerDelegate?.getAddress(addressLabel.text)
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goButtonPressed() {
+        getDirections()
+    }
     
     @IBAction func closeVC(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -54,11 +58,14 @@ class MapViewController: UIViewController {
     
     private func setupMapView() {
         
+        goButton.isHidden = true
+        
         if incomeSegueIdentifier == "showPlace" {
             setupPlacemark()
             mapPinImage.isHidden = true
             addressLabel.isHidden = true
             doneButton.isHidden = true
+            goButton.isHidden = false
         }
     }
     
@@ -84,6 +91,7 @@ class MapViewController: UIViewController {
             guard let placemarckLocation = placemark?.location else { return }
             
             annotation.coordinate = placemarckLocation.coordinate
+            self.placeCoordinate = placemarckLocation.coordinate
             
             self.mapView.showAnnotations([annotation], animated: true)
             self.mapView.selectAnnotation(annotation, animated: true) // что бы выделить созданую аннотацию у mapView
@@ -134,11 +142,26 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func showlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     private func showLocationAlert() {
         let alertController = UIAlertController(title: "Location Services Disabled", message: "To enable it go: Settings -> Privacy -> Location Services and turn On", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(alertAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    private func showUserLocation(){
+        
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     private func getCenterLocation(for mapView: MKMapView) -> CLLocation {
@@ -148,12 +171,60 @@ class MapViewController: UIViewController {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    private func showUserLocation(){
+    private func getDirections() {
         
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
+        guard let location = locationManager.location?.coordinate else {
+            showlert(title: "Error", message: "Current location is not found")
+            return
         }
+        
+        guard let request = createDirectionRequest(from: location) else {
+            showlert(title: "Error", message: "Destination is not found")
+            return
+        }
+        
+        // создаем маршрут на основе всех сведеней
+        let directions = MKDirections(request: request)
+        // запускаем расчет маршрута
+        directions.calculate { (response, error) in
+            if let error = error {
+                print("Error")
+                return
+            }
+            
+            guard let response = response else {
+                self.showlert(title: "Error", message: "Directions is not available")
+                return
+            }
+            
+            for route in response.routes {
+                self.mapView.addOverlay(route.polyline)
+                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true) // маршрут виден полностью
+                
+                let distance = String(format: "%.1f", route.distance / 1000)
+                let timeInterval = route.expectedTravelTime
+                
+                print("distance: \(distance) km")
+                print("timeInterval: \(timeInterval) sec")
+            }
+            
+        }
+    }
+    
+    // Метод для создания запроcа построения маршрута
+    private func createDirectionRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request? {
+        
+        guard let destinationCoordinate = placeCoordinate else { return nil }
+        let startingLocation = MKPlacemark(coordinate: coordinate) // начальная точка
+        let destination = MKPlacemark(coordinate: destinationCoordinate) // конечная точка маршрута
+        
+        let requst = MKDirections.Request()
+        requst.source = MKMapItem(placemark: startingLocation)
+        requst.destination = MKMapItem(placemark: destination)
+        requst.transportType = .automobile // задаем тип транспорта
+        requst.requestsAlternateRoutes = true
+        
+        return requst
     }
 }
 
@@ -203,13 +274,22 @@ extension MapViewController: MKMapViewDelegate {
                 if streetName != nil && buildNumber != nil {
                     self.addressLabel.text = "\(streetName!), \(buildNumber!)"
                 } else if streetName != nil {
-                     self.addressLabel.text = "\(streetName!)"
+                    self.addressLabel.text = "\(streetName!)"
                 } else {
                     self.addressLabel.text = ""
                 }
             }
             
         }
+    }
+    
+    // что бы подсветить маршруты определенным цветом
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .blue
+        
+        return renderer
     }
 }
 
