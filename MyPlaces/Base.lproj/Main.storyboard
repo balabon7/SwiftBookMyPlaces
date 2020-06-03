@@ -305,7 +305,7 @@
                         <viewLayoutGuide key="safeArea" id="rUS-6W-Qbq"/>
                     </view>
                     <connections>
-                        <outlet property="adressLabel" destination="oGL-rp-1N3" id="bDb-Dd-hYQ"/>
+                        <outlet property="addressLabel" destination="oGL-rp-1N3" id="bDb-Dd-hYQ"/>
                         <outlet property="doneButton" destination="RLD-1c-vcG" id="ekF-ib-8LD"/>
                         <outlet property="mapPinImage" destination="twg-bd-SJQ" id="eY2-nh-3xg"/>
                         <outlet property="mapView" destination="5kR-y5-Smt" id="PC6-ci-Qnf"/>
